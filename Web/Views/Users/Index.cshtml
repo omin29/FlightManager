@@ -4,13 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Users</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.PersonalIdentificationNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -29,7 +36,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Role)
-            </th>           
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -39,6 +46,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PersonalIdentificationNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
@@ -57,11 +67,18 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Role)
-                </td>               
+                </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    @{
+                        if (item.Role != "Admin")
+                        {
+                            <font>|</font>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }
+
+                    }
                 </td>
             </tr>
         }

@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<Data.Models.Flight>
 
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Flights</h1>
+@{if (User.IsInRole("Admin"))
+    {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -40,38 +46,46 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationTo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartureTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LandingTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlaneType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PilotName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FreePassengerSeats)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FreeBusinessSeats)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.UniquePlaneNumber">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UniquePlaneNumber">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UniquePlaneNumber">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LandingTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaneType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PilotName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FreePassengerSeats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FreeBusinessSeats)
+                </td>
+                <td>
+                    @{if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.UniquePlaneNumber">Edit</a> <font>|</font>
+                            <a asp-action="Delete" asp-route-id="@item.UniquePlaneNumber">Delete</a> <font>|</font>
+                        }
+
+                    }
+                    
+                    <a asp-action="Details" asp-route-id="@item.UniquePlaneNumber">Details</a>
+                    
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

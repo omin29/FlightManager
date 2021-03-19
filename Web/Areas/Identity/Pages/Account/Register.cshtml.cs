@@ -49,6 +49,7 @@ namespace Web.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
+            [EmailUserUnique]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -118,10 +119,20 @@ namespace Web.Areas.Identity.Pages.Account
                     LastName = Input.LastName,
                     PersonalIdentificationNumber = Input.PersonalIdentificationNumber,
                     Address = Input.Address,
-                    Role = "User"}; // modified here
+                    Role = (_userManager.Users.Count() == 0)?"Admin":"User"}; // modified here
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
                 if (result.Succeeded)
                 {
+                    if (_userManager.Users.Count() == 1)
+                    {
+                        await _userManager.AddToRoleAsync(await _userManager.FindByEmailAsync(user.Email), "Admin");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(await _userManager.FindByEmailAsync(user.Email), "User");
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -141,7 +152,7 @@ namespace Web.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //await _signInManager.SignInAsync(user, isPersistent: false); // auto sign in
                         return LocalRedirect(returnUrl);
                     }
                 }

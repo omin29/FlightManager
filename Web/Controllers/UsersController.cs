@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Data.Context;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly FlightManagerDbContext _context;
@@ -45,10 +47,10 @@ namespace Web.Controllers
         }
 
         // GET: UsersController/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        public ActionResult Create()
+        {
+            return Redirect(@"https://localhost:44370/Identity/Account/Register");
+        }
 
         //// POST: UsersController/Create
         //[HttpPost]
@@ -107,7 +109,9 @@ namespace Web.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalIdentificationNumber,FirstName,LastName,Email,PhoneNumber,Address,Role")] UserEditViewModel model)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalIdentificationNumber,UserName,FirstName,LastName,Email,PhoneNumber,Address,Role,"+
+            "NormalizedUserName,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,TwoFactorEnabled,LockoutEnd,"+
+            "LockoutEnabled,AccessFailedCount")] UserEditViewModel model)
         {
             if (id != model.Id)
             {
@@ -183,8 +187,13 @@ namespace Web.Controllers
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+
+            if(user.Role!= "Admin")
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
+            
             return RedirectToAction(nameof(Index));
         }
 

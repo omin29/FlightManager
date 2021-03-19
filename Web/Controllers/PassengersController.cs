@@ -146,91 +146,91 @@ namespace Web.Controllers
         }
 
         // GET: Passengers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var passenger = await _context.Passengers.FindAsync(id);
-            if (passenger == null)
-            {
-                return NotFound();
-            }
-            ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
-            return View(passenger);
-        }
+        //    var passenger = await _context.Passengers.FindAsync(id);
+        //    if (passenger == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
+        //    return View(passenger);
+        //}
 
         // POST: Passengers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonalIdentificationNumber,FirstName,MiddleName,LastName,PhoneNumber,Nationality,TicketType,ReservationId")] Passenger passenger)
-        {
-            if (id != passenger.Id)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,PersonalIdentificationNumber,FirstName,MiddleName,LastName,PhoneNumber,Nationality,TicketType,ReservationId")] Passenger passenger)
+        //{
+        //    if (id != passenger.Id)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(passenger);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PassengerExists(passenger.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
-            return View(passenger);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(passenger);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!PassengerExists(passenger.Id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
+        //    return View(passenger);
+        //}
 
         // GET: Passengers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var passenger = await _context.Passengers
-                .Include(p => p.Reservation)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (passenger == null)
-            {
-                return NotFound();
-            }
+        //    var passenger = await _context.Passengers
+        //        .Include(p => p.Reservation)
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (passenger == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(passenger);
-        }
+        //    return View(passenger);
+        //}
 
         // POST: Passengers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var passenger = await _context.Passengers.FindAsync(id);
-            _context.Passengers.Remove(passenger);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var passenger = await _context.Passengers.FindAsync(id);
+        //    _context.Passengers.Remove(passenger);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        private bool PassengerExists(int id)
-        {
-            return _context.Passengers.Any(e => e.Id == id);
-        }
+        //private bool PassengerExists(int id)
+        //{
+        //    return _context.Passengers.Any(e => e.Id == id);
+        //}
     }
 }

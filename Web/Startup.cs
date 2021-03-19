@@ -31,7 +31,7 @@ namespace Web
             services.AddDbContext<FlightManagerDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<User>(options => 
+            services.AddDefaultIdentity<User>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = false;
@@ -40,7 +40,8 @@ namespace Web
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
             })
-                .AddEntityFrameworkStores<FlightManagerDbContext>();
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<FlightManagerDbContext>();//
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
