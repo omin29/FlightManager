@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
-namespace Web.Data.Migrations
+namespace Data.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class Final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,12 +34,17 @@ namespace Web.Data.Migrations
                     PasswordHash = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
+                    PersonalIdentificationNumber = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(maxLength: 50, nullable: false),
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,11 +52,31 @@ namespace Web.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Flights",
+                columns: table => new
+                {
+                    UniquePlaneNumber = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LocationFrom = table.Column<string>(maxLength: 50, nullable: false),
+                    LocationTo = table.Column<string>(maxLength: 50, nullable: false),
+                    DepartureTime = table.Column<DateTime>(nullable: false),
+                    LandingTime = table.Column<DateTime>(nullable: false),
+                    PlaneType = table.Column<string>(maxLength: 50, nullable: false),
+                    PilotName = table.Column<string>(maxLength: 50, nullable: false),
+                    FreePassengerSeats = table.Column<int>(nullable: false),
+                    FreeBusinessSeats = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Flights", x => x.UniquePlaneNumber);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +97,7 @@ namespace Web.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -153,6 +177,52 @@ namespace Web.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FlightUniquePlaneNumber = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Flights_FlightUniquePlaneNumber",
+                        column: x => x.FlightUniquePlaneNumber,
+                        principalTable: "Flights",
+                        principalColumn: "UniquePlaneNumber",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Passengers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonalIdentificationNumber = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    MiddleName = table.Column<string>(maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    Nationality = table.Column<string>(maxLength: 50, nullable: false),
+                    TicketType = table.Column<string>(nullable: true),
+                    ReservationId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Passengers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Passengers_Reservations_ReservationId",
+                        column: x => x.ReservationId,
+                        principalTable: "Reservations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +261,28 @@ namespace Web.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_PersonalIdentificationNumber",
+                table: "AspNetUsers",
+                column: "PersonalIdentificationNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Passengers_PersonalIdentificationNumber",
+                table: "Passengers",
+                column: "PersonalIdentificationNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Passengers_ReservationId",
+                table: "Passengers",
+                column: "ReservationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_FlightUniquePlaneNumber",
+                table: "Reservations",
+                column: "FlightUniquePlaneNumber");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,10 +303,19 @@ namespace Web.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Passengers");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Reservations");
+
+            migrationBuilder.DropTable(
+                name: "Flights");
         }
     }
 }

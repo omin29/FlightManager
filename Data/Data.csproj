@@ -6,27 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Context\Migrations\20210305173339_initial.cs" />
-    <Compile Remove="Context\Migrations\20210305173339_initial.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210305205535_quick.cs" />
-    <Compile Remove="Context\Migrations\20210305205535_quick.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210306174104_Test.cs" />
-    <Compile Remove="Context\Migrations\20210306174104_Test.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210306180649_RequiredForeignKeys.cs" />
-    <Compile Remove="Context\Migrations\20210306180649_RequiredForeignKeys.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210306181829_RearrangedForeignKey.cs" />
-    <Compile Remove="Context\Migrations\20210306181829_RearrangedForeignKey.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210306184643_ForeignKeys.cs" />
-    <Compile Remove="Context\Migrations\20210306184643_ForeignKeys.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210306185258_ForeignKeys.cs" />
-    <Compile Remove="Context\Migrations\20210306185258_ForeignKeys.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210306185927_nut.cs" />
-    <Compile Remove="Context\Migrations\20210306185927_nut.Designer.cs" />
-    <Compile Remove="Context\Migrations\20210312212451_Latest.cs" />
-    <Compile Remove="Context\Migrations\20210312212451_Latest.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MailKit" Version="2.10.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.12" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.12" />
