@@ -41,15 +41,34 @@ namespace Web.Controllers
                 });
             }
 
+            if (userManager.Users.Count() == 0)
+            {
+                var user = new User
+                {
+                    UserName = "Admin",
+                    Email = "admin@abv.bg",
+                    PhoneNumber = "9999999999",
+                    FirstName = "Admin",
+                    LastName = "Adminov",
+                    PersonalIdentificationNumber = "9999999999",
+                    Address = "Admin street",
+                    Role = "Admin"
+                };
+
+                var result = await userManager.CreateAsync(user, "admin");
+
+                await userManager.AddToRoleAsync(await userManager.FindByEmailAsync(user.Email), "Admin");
+            }
+
             return View();
         }
 
-        [Authorize]
-        public async Task<IActionResult> Privacy()
+        //[Authorize]
+        public IActionResult Privacy()
         {
-            //return View();
-            var result = await userManager.GetRolesAsync(await userManager.GetUserAsync(this.User));
-            return this.Json(result);
+            return View();
+            /*var result = await userManager.GetRolesAsync(await userManager.GetUserAsync(this.User));
+            return this.Json(result);*/
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

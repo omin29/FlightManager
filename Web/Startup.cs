@@ -20,7 +20,7 @@ namespace Web
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;            
         }
 
         public IConfiguration Configuration { get; }
@@ -38,10 +38,10 @@ namespace Web
                 options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 5;
             })
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<FlightManagerDbContext>();//
+                .AddEntityFrameworkStores<FlightManagerDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
