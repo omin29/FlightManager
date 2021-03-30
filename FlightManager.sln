@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{0322AAA8-5EEA-4D71-ABE6-1B72D878954E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{0322AAA8-5EEA-4D71-ABE6-1B72D878954E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{FC7D01BB-9988-4A8B-AE00-C1CD8B4FBB76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{FC7D01BB-9988-4A8B-AE00-C1CD8B4FBB76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flights.Test", "Flights.Test\Flights.Test.csproj", "{2361C9EA-11C3-4EA5-85E8-907A89C9D689}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FC7D01BB-9988-4A8B-AE00-C1CD8B4FBB76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC7D01BB-9988-4A8B-AE00-C1CD8B4FBB76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC7D01BB-9988-4A8B-AE00-C1CD8B4FBB76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2361C9EA-11C3-4EA5-85E8-907A89C9D689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2361C9EA-11C3-4EA5-85E8-907A89C9D689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2361C9EA-11C3-4EA5-85E8-907A89C9D689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2361C9EA-11C3-4EA5-85E8-907A89C9D689}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
