@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\13модул\\New folder\\FlightManager-master\\Data\\Data.csproj": {}
+    "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\13модул\\New folder\\FlightManager-master\\Data\\Data.csproj": {
+    "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\13модул\\New folder\\FlightManager-master\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\User\\Desktop\\13модул\\New folder\\FlightManager-master\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\13модул\\New folder\\FlightManager-master\\Data\\obj\\",
+        "projectPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\oni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\oni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }
