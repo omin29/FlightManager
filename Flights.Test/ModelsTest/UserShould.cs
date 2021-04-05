@@ -28,17 +28,20 @@ namespace Flights.Test
             Assert.That(user.PersonalIdentificationNumber, Is.EqualTo(expected: user.PersonalIdentificationNumber));
         }
         [Test]
-        public void CorrectUser1()
+        [TestCase(12345678)]
+        public void ErrorEGN(int result)
         {
-
-
-            Assert.That(user.FirstName, Is.Null);
-            Assert.That(user.LastName, Is.Null);
-            Assert.That(user.PersonalIdentificationNumber, Is.Null);
-            Assert.That(user.PhoneNumber, Is.Null);
-
-
-
+            //проверява EGN e с по-малко от 10 символа ако EGN е с по-малко от 10символа теста работи
+            this.user.CheckEGN(result);
+            Assert.IsFalse(this.user.CheckEGN(result), "PIN (ЕГН) must be 10 digits");
+        }
+        [Test]
+        [TestCase(1524223490)]
+        public void CorrectEGn(int result)
+        {
+            //проверява EGN дали е с 10символа
+            this.user.CheckEGN(result);
+            Assert.IsTrue(this.user.CheckEGN(result), "PIN (ЕГН) must be 10 digits");
         }
     }
 }

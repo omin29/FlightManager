@@ -29,19 +29,7 @@ namespace Flights.Test
             Assert.That(userEdit.Address, Is.EqualTo(expected: userEdit.Address));
             Assert.That(userEdit.Role, Is.EqualTo(expected: userEdit.Role));
         }
-        [Test]
-        public void CorrectUserEditViewModel1()
-        {
-
-            Assert.That(userEdit.FirstName, Is.Null);
-            Assert.That(userEdit.LastName, Is.Null);
-            Assert.That(userEdit.PersonalIdentificationNumber, Is.Null);
-            Assert.That(userEdit.PhoneNumber, Is.Null);
-            Assert.That(userEdit.Address, Is.Null);
-            Assert.That(userEdit.Role, Is.Null);
-
-
-
-        }
+        
+        
     }
 }

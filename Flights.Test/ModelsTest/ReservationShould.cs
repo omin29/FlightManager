@@ -27,19 +27,7 @@ namespace Flights.Test
             Assert.That(reservation.Email, Is.EqualTo(expected: reservation.Email));
             Assert.That(reservation.Passengers, Is.EqualTo(expected: reservation.Passengers));
         }
-        [Test]
-        public void CorrectReservation1()
-        {
-
-            Assert.That(reservation.Id, Is.Not.Null);
-            Assert.That(reservation.Flight, Is.Null);
-            Assert.That(reservation.Passengers, Is.Not.Null);
-            Assert.That(reservation.Email, Is.Null);
-            Assert.That(reservation.FlightUniquePlaneNumber, Is.Not.Null);
-
-
-
-
-        }
+        
+       
     }
 }

@@ -33,21 +33,21 @@ namespace Flights.Test
             Assert.That(passenger.PersonalIdentificationNumber, Is.EqualTo(expected: passenger.PersonalIdentificationNumber));
         }
         [Test]
-        public void CorrectPassenger1()
+        [TestCase(12345678)]
+        public void ErrorNumber(int result)
         {
+            //проверява тел. номер с по-малко от 10 символа ако тел. номер е с по-малко от 10символа теста работи
+            this.passenger.CheckNumber(result);
+            Assert.IsFalse(this.passenger.CheckNumber(result), "Phone number must be 10 digits");
+        }
 
-            Assert.That(passenger.Reservation, Is.Null);
-            Assert.That(passenger.Id, Is.Not.Null);
-            Assert.That(passenger.FirstName, Is.Null);
-            Assert.That(passenger.LastName, Is.Null);
-            Assert.That(passenger.MiddleName, Is.Null);
-            Assert.That(passenger.PersonalIdentificationNumber, Is.Null);
-            Assert.That(passenger.PhoneNumber, Is.Null);
-            Assert.That(passenger.Nationality, Is.Null);
-            Assert.That(passenger.ReservationId, Is.Not.Null);
-            Assert.That(passenger.TicketType, Is.Null);
-
-
+        [Test]
+        [TestCase(1987868643)]
+        public void CorrectNumber(int result)
+        {
+            //проверява телефонен номер с 10символа
+            this.passenger.CheckNumber(result);
+            Assert.IsTrue(this.passenger.CheckNumber(result), "Phone number must be 10 digits");
         }
     }
 }

@@ -11,18 +11,8 @@ using System.Linq;
 
 namespace Data.Attributes
 {
-    /// <summary>
-    /// A custom attribute which ensures that the passenger's personal identification number is unique to the database.
-    /// It also ensures that the passenger's personal identification number is unique to the list which holds pending passengers.<see cref="Data.Static.ReservationAssistant"/>
-    /// </summary>
-    public class UniquePassengerPIN: ValidationAttribute
+    public class UniquePassengerPIN: ValidationAttribute //PIN == ЕГН
     {
-        /// <summary>
-        /// Performs a validation check on the value of the passenger's personal identification number to ensure that it is unique.
-        /// </summary>
-        /// <param name="value">The value of the passenger's personal identification number.</param>
-        /// <param name="validationContext">Describes the context in which a validation check is performed.</param>
-        /// <returns>A container for the results of a validation request.</returns>
         protected override ValidationResult IsValid(object value,
             ValidationContext validationContext)
         {
@@ -37,11 +27,6 @@ namespace Data.Attributes
             return ValidationResult.Success;
         }
 
-        /// <summary>
-        /// Checks if the passenger's personal identification number is unique to the database.
-        /// </summary>
-        /// <param name="value">The personal identification number of the passenger.</param>
-        /// <returns>A bool value which indicates whether the passenger's personal identification number is unique to the database.</returns>
         private async Task<bool> CheckPassengerPIN(object value)
         {
             using (var db = new FlightManagerDbContext(new DbContextOptions<FlightManagerDbContext>()))
