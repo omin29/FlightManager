@@ -1,47 +1,97 @@
-﻿@model IEnumerable<Data.Models.Reservation>
+﻿@using Web.Pagers;
+@using Web.Controllers;
+@model Data.Models.ReservationIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
+<script>
 
+    function Search() {
+        @ReservationPager.search=document.getElementById("SearchString").value
+        @if (Model.Items.Count() < 1) Model.Pager.CurrentPage = 1;
+    }
+    
+</script>
 <h1>Reservations</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+@using (Html.BeginForm())
+{
+    <label for="pages"></label>
+    <select name="pages" id="pages" value="@Model.Pager.ShowRecords">
+
+        @foreach (var item in Model.pageRecordShow)
+        {
+            if (item == Model.Pager.ShowRecords)
+            {
+                <option selected value="@item">@item</option>
+            }
+            else
+            {
+                <option value="@item">@item</option>
+            }
+        }
+
+    </select>
+    <button asp-action="Index" asp-route-Pager.CurrentPage="1" >Show</button>
+    <p>
+        Search:
+
+        <input name="SearchString" id="SearchString" type="text" value="@ReservationPager.search" />
+
+        <button asp-action="Index" asp-route-Pager.CurrentPage="1" onclick="Search()">Search</button>
+    </p>
+}
+<ul class="pagination">
+
+    @for (var i = 1; i <= Model.Pager.PagesCount; ++i)
+    {
+
+        <li class="page-item @(i == Model.Pager.CurrentPage ? "active" : "")">
+
+            <a asp-route-Pager.CurrentPage="@i" class="page-link">@i</a>
+        </li>
+    }
+
+</ul>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.Items.First().Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Flight)
+                @Html.DisplayNameFor(model => model.Items.First().Flight)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Items.First().Email)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Flight./*LocationFrom*/FlightGeneralInfo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> @*|*@
-                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight./*LocationFrom*/FlightGeneralInfo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> @*|*@
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+

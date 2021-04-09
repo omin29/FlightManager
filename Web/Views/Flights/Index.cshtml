@@ -1,6 +1,14 @@
-﻿@model IEnumerable<Data.Models.Flight>
+﻿@using Web.Pagers;
+@using Web.Controllers;
+@model Data.Models.FlightIndexViewModel
 
+<script>
 
+    function Search() {
+        @FlightPager.search=document.getElementById("SearchString").value
+        @if (Model.Items.Count() < 1) Model.Pager.CurrentPage = 1;
+    }
+</script>
 @{
     ViewData["Title"] = "Index";
 }
@@ -14,39 +22,77 @@
     }
 
 }
+@using (Html.BeginForm())
+{
+    <label for="pages"></label>
+    <select name="pages" id="pages" value="@Model.Pager.ShowRecords">
 
+        @foreach (var item in Model.pageRecordShow)
+        {
+            if (item == Model.Pager.ShowRecords)
+            {
+                <option selected value="@item">@item</option>
+            }
+            else
+            {
+                <option value="@item">@item</option>
+            }
+        }
+
+    </select>
+    <button asp-action="Index" asp-route-Pager.CurrentPage="1">Show</button>
+    <p>
+        Search:
+
+        <input name="SearchString" id="SearchString" type="text" value="@FlightPager.search" />
+
+        <button asp-action="Index" asp-route-Pager.CurrentPage="1" onclick="Search()">Search</button>
+    </p>
+}
+<ul class="pagination">
+
+    @for (var i = 1; i <= Model.Pager.PagesCount; ++i)
+    {
+
+        <li class="page-item @(i == Model.Pager.CurrentPage ? "active" : "")">
+
+            <a asp-route-Pager.CurrentPage="@i" class="page-link">@i</a>
+        </li>
+    }
+
+</ul>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.LocationFrom)
+                @Html.DisplayNameFor(model => model.Items.First().LocationFrom)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LocationTo)
+                @Html.DisplayNameFor(model => model.Items.First().LocationTo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DepartureTime)
+                @Html.DisplayNameFor(model => model.Items.First().DepartureTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LandingTime)
+                @Html.DisplayNameFor(model => model.Items.First().LandingTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PlaneType)
+                @Html.DisplayNameFor(model => model.Items.First().PlaneType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PilotName)
+                @Html.DisplayNameFor(model => model.Items.First().PilotName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FreePassengerSeats)
+                @Html.DisplayNameFor(model => model.Items.First().FreePassengerSeats)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FreeBusinessSeats)
+                @Html.DisplayNameFor(model => model.Items.First().FreeBusinessSeats)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Items)
         {
             <tr>
                 <td>
@@ -81,9 +127,9 @@
                         }
 
                     }
-                    
+
                     <a asp-action="Details" asp-route-id="@item.UniquePlaneNumber">Details</a>
-                    
+
                 </td>
             </tr>
         }

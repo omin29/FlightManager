@@ -9,7 +9,8 @@ using Data.Context;
 using Data.Models;
 using Data.Static;
 using MimeKit;
-
+using Data.Shared;
+using Web.Pagers;
 namespace Web.Controllers
 {
     public class PassengersController : Controller
@@ -20,12 +21,91 @@ namespace Web.Controllers
         {           
             _context = context;
         }
-
+        /// <summary>
+        /// The Passengers controller for the Index page. Supports pagination and filtration
+        /// </summary>
+        /// <param name="searchString">string for filtering flights with given FirstName,MiddleName,LastName,PersonalIdentificationNumber</param>
+        /// <param name="model">PassengerIndexViewModel object used to display filtered or paged records from Passengers</param>
+        /// <param name="pages">int for the amount of records to be shown on a single page</param>
+        /// <returns>Returns Passengers Index View with the filtered Passengers(if entered search string) otherwise pages all records</returns>
         // GET: Passengers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, PassengerIndexViewModel model, int pages)
         {
-            var flightManagerDbContext = _context.Passengers.Include(p => p.Reservation);
-            return View(await flightManagerDbContext.ToListAsync());
+            if (pages < 1) pages = PassengerPager.currentAmount;
+            else PassengerPager.currentAmount = pages;
+            model.Pager ??= new PagerViewModel();
+            model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
+            List<Passenger> items = new List<Passenger>();
+
+            //check if there is searchy string and filter all records without pagination
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                PassengerPager.search = searchString;
+                items = await _context.Passengers.Select(u => new Passenger()
+                {
+                    Id = u.Id,
+                    PersonalIdentificationNumber = u.PersonalIdentificationNumber,
+                    FirstName = u.FirstName,
+                    MiddleName = u.MiddleName,
+                    LastName = u.LastName,
+                    PhoneNumber=u.PhoneNumber,
+                    Nationality=u.Nationality,
+                    TicketType=u.TicketType,
+                    Reservation=u.Reservation,
+                    ReservationId=u.ReservationId
+                }).Where(s => (s.LastName.Contains(searchString) || s.FirstName.Contains(searchString) ||
+                s.MiddleName.Contains(searchString) || s.PersonalIdentificationNumber.Contains(searchString))).ToListAsync();
+                model.Items = items;
+                model.Pager.CurrentPage = 1;
+                model.Pager.PagesCount = 1;
+            }
+            //if not searching use pagination
+            else
+            {
+                PassengerPager.search = "";
+                items = await _context.Passengers.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new Passenger()
+                {
+                    Id = u.Id,
+                    PersonalIdentificationNumber = u.PersonalIdentificationNumber,
+                    FirstName = u.FirstName,
+                    MiddleName = u.MiddleName,
+                    LastName = u.LastName,
+                    PhoneNumber = u.PhoneNumber,
+                    Nationality = u.Nationality,
+                    TicketType = u.TicketType,
+                    Reservation = u.Reservation,
+                    ReservationId = u.ReservationId
+                }).ToListAsync();
+                model.Items = items;
+                model.Pager.PagesCount = (int)Math.Ceiling(await _context.Passengers.CountAsync() / (double)pages);
+                //if you change the show count and there are not enough pages e.g. you have 6 pages for show X &
+                //change the count to Y ur current page is empty therefore set the current page to 1 and redo pagination
+                if (!model.Items.Any())
+                {
+                    model.Pager.CurrentPage = 1;
+                    items = await _context.Passengers.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new Passenger()
+                    {
+                        Id = u.Id,
+                        PersonalIdentificationNumber = u.PersonalIdentificationNumber,
+                        FirstName = u.FirstName,
+                        MiddleName = u.MiddleName,
+                        LastName = u.LastName,
+                        PhoneNumber = u.PhoneNumber,
+                        Nationality = u.Nationality,
+                        TicketType = u.TicketType,
+                        Reservation = u.Reservation,
+                        ReservationId = u.ReservationId
+                    }).ToListAsync();
+                    model.Items = items;
+                }
+            }
+            model.Pager.ShowRecords = PassengerPager.currentAmount;
+            
+            return View(model);
+
+
+            //var flightManagerDbContext = _context.Passengers.Include(p => p.Reservation);
+            //return View(await flightManagerDbContext.ToListAsync());
         }
 
         // GET: Passengers/Details/5

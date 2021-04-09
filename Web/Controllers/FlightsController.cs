@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Data.Context;
 using Data.Models;
 using Microsoft.AspNetCore.Authorization;
-
+using Data.Shared;
+using Web.Pagers;
 namespace Web.Controllers
 {
+    
+    
     public class FlightsController : Controller
     {
         private readonly FlightManagerDbContext _context;
@@ -21,11 +24,88 @@ namespace Web.Controllers
         }
 
         // GET: Flights
-        public async Task<IActionResult> Index()
+        /// <summary>
+        /// The Flights controller for the Index page. Supports pagination and filtration
+        /// </summary>
+        /// <param name="searchString">string for filtering Flights with given from location & to location</param>
+        /// <param name="model">FlightIndexViewModel object used to display filtered or paged records from Flights</param>
+        /// <param name="pages">int for the amount of records to be shown on a single page</param>
+        /// <returns>Returns Flights Index View with the filtered Flights(if entered search string) otherwise pages all records</returns>
+        public async Task<IActionResult> Index(string searchString, FlightIndexViewModel model, int pages)
         {
-            return View(await _context.Flights.ToListAsync());
-        }
+            if (pages < 1) pages = FlightPager.currentAmount;
+            else FlightPager.currentAmount = pages;
+            model.Pager ??= new PagerViewModel();
+            model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
+            List<Flight> items = new List<Flight>();
 
+            //check if there is searchy string and filter all records without pagination
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                FlightPager.search = searchString;
+                items = await _context.Flights.Select(u => new Flight()
+                {
+                    UniquePlaneNumber=u.UniquePlaneNumber,
+                    LocationFrom=u.LocationFrom,
+                    LocationTo=u.LocationTo,
+                    DepartureTime=u.DepartureTime,
+                    LandingTime=u.LandingTime,
+                    PlaneType=u.PlaneType,
+                    PilotName=u.PilotName,
+                    FreePassengerSeats=u.FreePassengerSeats,
+                    FreeBusinessSeats=u.FreeBusinessSeats
+                }).Where(s => (s.LocationFrom.Contains(searchString)|| s.LocationTo.Contains(searchString))).ToListAsync();
+                model.Items = items;
+                model.Pager.CurrentPage = 1;
+                model.Pager.PagesCount = 1;
+            }
+            //if not searching use pagination
+            else
+            {
+                FlightPager.search = "";
+                items = await _context.Flights.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new Flight()
+                {
+                    UniquePlaneNumber = u.UniquePlaneNumber,
+                    LocationFrom = u.LocationFrom,
+                    LocationTo = u.LocationTo,
+                    DepartureTime = u.DepartureTime,
+                    LandingTime = u.LandingTime,
+                    PlaneType = u.PlaneType,
+                    PilotName = u.PilotName,
+                    FreePassengerSeats = u.FreePassengerSeats,
+                    FreeBusinessSeats = u.FreeBusinessSeats
+                }).ToListAsync();
+                model.Items = items;
+                model.Pager.PagesCount = (int)Math.Ceiling(await _context.Flights.CountAsync() / (double)pages);
+                //if you change the show count and there are not enough pages e.g. you have 6 pages for show X &
+                //change the count to Y ur current page is empty therefore set the current page to 1 and redo pagination
+                if (!model.Items.Any())
+                {
+                    model.Pager.CurrentPage = 1;
+                    items = await _context.Flights.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new Flight()
+                    {
+                        UniquePlaneNumber = u.UniquePlaneNumber,
+                        LocationFrom = u.LocationFrom,
+                        LocationTo = u.LocationTo,
+                        DepartureTime = u.DepartureTime,
+                        LandingTime = u.LandingTime,
+                        PlaneType = u.PlaneType,
+                        PilotName = u.PilotName,
+                        FreePassengerSeats = u.FreePassengerSeats,
+                        FreeBusinessSeats = u.FreeBusinessSeats
+                    }).ToListAsync();
+                    model.Items = items;
+                }
+            }
+            model.Pager.ShowRecords = FlightPager.currentAmount;
+            return View(model);
+            
+        }
+        /// <summary>
+        /// The Flights controller for the Details page. Shows details about the Flight and Passengers in selected Flight
+        /// </summary>
+        /// <param name="id">int for Flight id to find Passengers</param>
+        /// <returns>Returns Flight Detail page showing information for both the Flight and its Passengers</returns>
         // GET: Flights/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -33,13 +113,24 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
-
             var flight = await _context.Flights
                 .FirstOrDefaultAsync(m => m.UniquePlaneNumber == id);
+
             if (flight == null)
             {
                 return NotFound();
             }
+
+            List<Reservation> reservations = _context.Reservations.Where(x => x.FlightUniquePlaneNumber == flight.UniquePlaneNumber).ToList();
+            List<Passenger> passengers = new List<Passenger>();
+
+            foreach (var reservation in reservations)
+            {
+                passengers.AddRange(_context.Passengers.Where(x => x.ReservationId == reservation.Id));
+            }
+
+            ViewData["Passengers"] = passengers;
+
 
             return View(flight);
         }

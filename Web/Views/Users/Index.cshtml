@@ -1,47 +1,96 @@
-﻿@model IEnumerable<Data.Models.User>
+﻿@using Web.Pagers
+@using Web.Controllers;
+@model Data.Models.UserIndexViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewBag.Title = "Users";
 }
 
+<script>
+
+    function Search() {
+        @UserPager.search=document.getElementById("SearchString").value
+        @if (Model.Items.Count() < 1) Model.Pager.CurrentPage = 1;
+    }
+</script>
 <h1>Users</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
+@using (Html.BeginForm())
+{
+    <label for="pages"></label>
+    <select name="pages" id="pages" value="@Model.Pager.ShowRecords">
+
+        @foreach (var item in Model.pageRecordShow)
+        {
+            if (item == Model.Pager.ShowRecords)
+            {
+                <option selected value="@item">@item</option>
+            }
+            else
+            {
+                <option value="@item">@item</option>
+            }
+        }
+
+    </select>
+    <button asp-action="Index" asp-route-Pager.CurrentPage="1">Show</button>
+    <p>
+        Search:
+        
+        <input name="SearchString" id ="SearchString" type="text" value="@UserPager.search" /> 
+
+        <button asp-action="Index" asp-route-Pager.CurrentPage="1" onclick="Search()">Search</button> 
+    </p>
+}
+<ul class="pagination">
+
+    @for (var i = 1; i <= Model.Pager.PagesCount; ++i)
+    {
+
+        <li class="page-item @(i == Model.Pager.CurrentPage ? "active" : "")">
+
+            <a asp-route-Pager.CurrentPage="@i" class="page-link">@i</a>
+        </li>
+    }
+    
+</ul>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PersonalIdentificationNumber)
+                @Html.DisplayNameFor(model => model.Items.First().PersonalIdentificationNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayNameFor(model => model.Items.First().UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.DisplayNameFor(model => model.Items.First().FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.Items.First().LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Items.First().Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                @Html.DisplayNameFor(model => model.Items.First().PhoneNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.Items.First().Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Role)
+                @Html.DisplayNameFor(model => model.Items.First().Role)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Items)
         {
             <tr>
                 <td>
@@ -77,7 +126,6 @@
                             <font>|</font>
                             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         }
-
                     }
                 </td>
             </tr>
