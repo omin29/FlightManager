@@ -60,5 +60,6 @@ namespace Data.Models
         /// </summary>
         [RegularExpression(@"\b(Admin|User)\b")]
         public string Role { get; set; }
+        
     }
 }

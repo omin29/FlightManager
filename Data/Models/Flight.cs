@@ -97,10 +97,14 @@ namespace Data.Models
         /// A navigation property used for configuring relation to the <see cref=" Models.Reservation"/> entities.
         /// </summary>
         public virtual ICollection<Reservation> Reservations { get; set; }
+<<<<<<< Updated upstream
 
         /// <summary>
         /// A constructor which sets an empty HashSet as a value to the <see cref=" Reservations"/> navigation property.
         /// </summary>
+=======
+        
+>>>>>>> Stashed changes
         public Flight()
         {
             Reservations = new HashSet<Reservation>();

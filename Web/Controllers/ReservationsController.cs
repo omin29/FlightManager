@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Data.Context;
 using Data.Models;
 using Data.Static;
-
+using Data.Shared;
+using Web.Pagers;
 namespace Web.Controllers
 {
     public class ReservationsController : Controller
@@ -19,14 +20,69 @@ namespace Web.Controllers
         {
             _context = context;
         }
-
+        /// <summary>
+        /// The Reservations controller for the Index page. Supports pagination and filtration
+        /// </summary>
+        /// <param name="searchString">string for filtering Reservations with given Email</param>
+        /// <param name="model">ReservationIndexViewModel object used to display filtered or paged records from Reservations</param>
+        /// <param name="pages">int for the amount of records to be shown on a single page</param>
+        /// <returns>Returns Reservations Index View with the filtered Reservations(if entered search string) otherwise pages all records</returns>
         // GET: Reservations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, ReservationIndexViewModel model, int pages)
         {
-            var flightManagerDbContext = _context.Reservations.Include(r => r.Flight);
-            return View(await flightManagerDbContext.ToListAsync());
+            if (pages < 1) pages = ReservationPager.currentAmount;
+            else ReservationPager.currentAmount = pages;
+            model.Pager ??= new PagerViewModel();
+            model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
+            List<Reservation> items = new List<Reservation>();
+            //check if there is searchy string and filter all records without pagination
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                ReservationPager.search = searchString;
+                items = await _context.Reservations.Select(u => new Reservation()
+                {
+                    Id = u.Id,
+                    Flight = u.Flight,
+                    Email = u.Email
+                }).Where(s => s.Email.Contains(searchString)).ToListAsync();
+                model.Items = items;
+                model.Pager.CurrentPage = 1;
+                model.Pager.PagesCount = 1;
+            }
+            //if not searching use pagination
+            else
+            {
+                ReservationPager.search = "";
+                items = await _context.Reservations.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new Reservation()
+                {
+                    Id = u.Id,
+                    Flight = u.Flight,
+                    Email = u.Email
+                }).ToListAsync();
+                model.Items = items;
+                model.Pager.PagesCount = (int)Math.Ceiling(await _context.Reservations.CountAsync() / (double)pages);
+                //if you change the show count and there are not enough pages e.g. you have 6 pages for show X &
+                //change the count to Y ur current page is empty therefore set the current page to 1 and redo pagination
+                if (!model.Items.Any())
+                {
+                    model.Pager.CurrentPage = 1;
+                    items = await _context.Reservations.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new Reservation()
+                    {
+                        Id=u.Id,
+                        Flight=u.Flight,
+                        Email=u.Email
+                    }).ToListAsync();
+                    model.Items = items;
+                }
+            }
+            model.Pager.ShowRecords = ReservationPager.currentAmount;
+            return View(model);
         }
-
+        /// <summary>
+        /// The Reservation controller for the Details page. Shows details about the Reservation and the Passengers in it
+        /// </summary>
+        /// <param name="id">int id for the reserved Flight</param>
+        /// <returns>Returns Reservation Detail page showing information for both the Reservation and the Passengers</returns>
         // GET: Reservations/Details/5
         public async Task<IActionResult> Details(int? id)
         {

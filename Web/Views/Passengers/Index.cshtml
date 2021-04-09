@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Data.Models.Passenger>
+﻿@using Web.Pagers
+@using Web.Controllers;
+@model Data.Models.PassengerIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -7,71 +9,122 @@
 <h1>Passengers</h1>
 
 @*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<script>
+
+    function Search() {
+        @PassengerPager.search=document.getElementById("SearchString").value
+        @if (Model.Items.Count() < 1) Model.Pager.CurrentPage = 1;
+    }
+</script>
+
+
+
+
+@using (Html.BeginForm())
+{
+    <label for="pages"></label>
+    <select name="pages" id="pages" value="@Model.Pager.ShowRecords">
+
+        @foreach (var item in Model.pageRecordShow)
+        {
+            if (item == Model.Pager.ShowRecords)
+            {
+                <option selected value="@item">@item</option>
+            }
+            else
+            {
+                <option value="@item">@item</option>
+            }
+        }
+
+    </select>
+    <button asp-action="Index" asp-route-Pager.CurrentPage="1">Show</button>
+    <p>
+        Search:
+
+        <input name="SearchString" id="SearchString" type="text" value="@PassengerPager.search" />
+
+        <button asp-action="Index" asp-route-Pager.CurrentPage="1" onclick="Search()">Search</button>
+    </p>
+}
+<ul class="pagination">
+
+    @for (var i = 1; i <= Model.Pager.PagesCount; ++i)
+    {
+
+        <li class="page-item @(i == Model.Pager.CurrentPage ? "active" : "")">
+
+            <a asp-route-Pager.CurrentPage="@i" class="page-link">@i</a>
+        </li>
+    }
+
+</ul>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PersonalIdentificationNumber)
+                @Html.DisplayNameFor(model => model.Items.First().PersonalIdentificationNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.DisplayNameFor(model => model.Items.First().FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MiddleName)
+                @Html.DisplayNameFor(model => model.Items.First().MiddleName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.Items.First().LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                @Html.DisplayNameFor(model => model.Items.First().PhoneNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nationality)
+                @Html.DisplayNameFor(model => model.Items.First().Nationality)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TicketType)
+                @Html.DisplayNameFor(model => model.Items.First().TicketType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Reservation)
+                @Html.DisplayNameFor(model => model.Items.First().Reservation)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PersonalIdentificationNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MiddleName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TicketType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reservation.Email)
-            </td>
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> @*|*@
-                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonalIdentificationNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Email)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> @*|*@
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

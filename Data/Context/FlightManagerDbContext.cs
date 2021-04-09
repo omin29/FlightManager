@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Data.Context
 {
@@ -38,12 +39,18 @@ namespace Data.Context
         {
         }
 
+<<<<<<< Updated upstream
 
         /// <summary>
         /// A Fluent API which lets you modify how your database entities are mapped. In this case, there are added restrictions which make
         /// the personal identification numbers of both the users and the passengers unique columns.
         /// </summary>
         /// <param name="builder"><see cref=" ModelBuilder"/></param>
+=======
+        
+
+
+>>>>>>> Stashed changes
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -53,7 +60,11 @@ namespace Data.Context
 
             builder.Entity<Passenger>()
                 .HasIndex(x => x.PersonalIdentificationNumber)
+<<<<<<< Updated upstream
                 .IsUnique();          
+=======
+                .IsUnique();
+>>>>>>> Stashed changes
         }
 
         /// <summary>

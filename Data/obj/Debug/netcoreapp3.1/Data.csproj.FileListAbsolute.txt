@@ -137,6 +137,7 @@ C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Data\obj\Debu
 C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Data\obj\Debug\netcoreapp3.1\Data.dll
 C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Data\obj\Debug\netcoreapp3.1\Data.pdb
 C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Data\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
+<<<<<<< Updated upstream
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.xml
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
 C:\Users\User\Desktop\13модул\FlightManager-master\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
@@ -210,3 +211,79 @@ C:\Users\User\Desktop\13модул\FlightManager-master\Data\bin\Debug\netcoreap
 C:\Users\User\Desktop\13модул\FlightManager-master\Data\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
 C:\Users\User\Desktop\13модул\FlightManager-master\Data\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
 C:\Users\User\Desktop\13модул\FlightManager-master\Data\bin\Debug\netcoreapp3.1\Data.xml
+=======
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.exe
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.deps.json
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Data.pdb
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.pdb
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\Wizendraw\Documents\GitHub\FlightManager\Data\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+>>>>>>> Stashed changes

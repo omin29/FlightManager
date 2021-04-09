@@ -62,14 +62,7 @@ namespace Web.Controllers
 
             return View();
         }
-
-        //[Authorize]
-        public IActionResult Privacy()
-        {
-            return View();
-            /*var result = await userManager.GetRolesAsync(await userManager.GetUserAsync(this.User));
-            return this.Json(result);*/
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
