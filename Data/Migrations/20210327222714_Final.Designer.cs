@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     [DbContext(typeof(FlightManagerDbContext))]
     [Migration("20210327222714_Final")]
     partial class Final

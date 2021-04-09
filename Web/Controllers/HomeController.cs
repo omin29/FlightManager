@@ -55,7 +55,7 @@ namespace Web.Controllers
                     Role = "Admin"
                 };
 
-                var result = await userManager.CreateAsync(user, "admin");
+                await userManager.CreateAsync(user, "admin");
 
                 await userManager.AddToRoleAsync(await userManager.FindByEmailAsync(user.Email), "Admin");
             }

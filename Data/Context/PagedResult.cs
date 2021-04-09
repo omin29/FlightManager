@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Data.Context
 {
-    public class PagedResult<T> : PagedResultBase where T : class
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    /*public class PagedResult<T> : PagedResultBase where T : class
     {
         public IList<T> Results { get; set; }
 
@@ -12,6 +13,6 @@ namespace Data.Context
         {
             Results = new List<T>();
         }
-    }
+    }*/
 
 }

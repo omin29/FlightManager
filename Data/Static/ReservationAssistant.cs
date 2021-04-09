@@ -79,8 +79,10 @@ namespace Data.Static
 
             message.Subject = "Flight reservation status";
 
-            BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = emailBody.ToString();
+            BodyBuilder bodyBuilder = new BodyBuilder
+            {
+                TextBody = emailBody.ToString()
+            };
 
             message.Body = bodyBuilder.ToMessageBody();
 

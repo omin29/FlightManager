@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Data.Context
 {
-    public abstract class PagedResultBase
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    /*public abstract class PagedResultBase
     {
         public int CurrentPage { get; set; }
         public int PageCount { get; set; }
@@ -21,5 +22,5 @@ namespace Data.Context
         {
             get { return Math.Min(CurrentPage * PageSize, RowCount); }
         }
-    }
+    }*/
 }

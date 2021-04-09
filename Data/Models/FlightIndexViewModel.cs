@@ -8,6 +8,7 @@ namespace Data.Models
     /// </summary>
     public class FlightIndexViewModel
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public int[] pageRecordShow = new int[5]
         {
             10, 15, 20, 25, 30
