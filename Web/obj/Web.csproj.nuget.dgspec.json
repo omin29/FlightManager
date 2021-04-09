@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Web\\Web.csproj": {}
+    "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Web\\Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Data\\Data.csproj": {
+    "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Data\\obj\\",
+        "projectPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\oni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\oni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,21 +93,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Web\\Web.csproj": {
+    "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Web\\Web.csproj",
+        "projectUniqueName": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Web\\Web.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Web\\obj\\",
+        "projectPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Web\\Web.csproj",
+        "packagesPath": "C:\\Users\\oni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\oni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -121,8 +121,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\13модул\\FlightManager-master\\Data\\Data.csproj"
+              "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\oni\\Desktop\\FINAL MODULE 13\\The project\\FlightManager\\Data\\Data.csproj"
               }
             }
           }
@@ -198,7 +198,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }
