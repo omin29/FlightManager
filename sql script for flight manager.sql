@@ -43,6 +43,24 @@ SELECT TOP (1000) [Id]
       ,[FreeBusinessSeats]
   FROM [FlightManager].[dbo].[Flights]
 
+  --Get reservations
+  SELECT TOP (1000) [Id]
+      ,[FlightUniquePlaneNumber]
+      ,[Email]
+  FROM [FlightManager].[dbo].[Reservations]
+
+  --Get passengers
+  SELECT TOP (1000) [Id]
+      ,[PersonalIdentificationNumber]
+      ,[FirstName]
+      ,[MiddleName]
+      ,[LastName]
+      ,[PhoneNumber]
+      ,[Nationality]
+      ,[TicketType]
+      ,[ReservationId]
+  FROM [FlightManager].[dbo].[Passengers]
+
   --Delete all users
   DELETE FROM [AspNetUsers] WHERE 1=1
 
@@ -51,6 +69,9 @@ SELECT TOP (1000) [Id]
 
   --Delete all flights
   DELETE FROM [Flights] WHERE 1=1
+
+  --Delete all reservations
+  DELETE FROM [Reservations] WHERE 1=1
 
   --Adds 60 test users to the database. You cannot log in these user accounts. They exist for testing the filtering and paging functionality of the project.
   --ENSURE THAT ADMIN EXISTS BEFORE EXECUTING THIS QUERY
@@ -180,3 +201,133 @@ SELECT TOP (1000) [Id]
 	('From58','To58','2021-03-06 22:11:00.0000000','2021-03-07 22:11:00.0000000','PlaneType58','Pilot58','5','5'),
 	('From59','To59','2021-03-06 22:11:00.0000000','2021-03-07 22:11:00.0000000','PlaneType59','Pilot59','5','5'),
 	('From60','To60','2021-03-06 22:11:00.0000000','2021-03-07 22:11:00.0000000','PlaneType60','Pilot60','5','5');
+
+	
+	--Adds 60 test reservations to the database. They exist for testing the filtering and paging functionality of the project.
+	--ENSURE THAT DATABASE HAS JUST BEEN CREATED AND TEST FLIGHTS HAVE BEEN ADDED
+	INSERT INTO [Reservations]([FlightUniquePlaneNumber],[Email])
+	VALUES('1','fox@abv.bg'),
+	('2','ivo@abv.bg'),
+	('3','gosho@abv.bg'),
+	('4','test@abv.bg'),
+	('5','test@abv.bg'),
+	('6','test@abv.bg'),
+	('7','test@abv.bg'),
+	('8','test@abv.bg'),
+	('9','test@abv.bg'),
+	('10','test@abv.bg'),
+	('11','test@abv.bg'),
+	('12','test@abv.bg'),
+	('13','test@abv.bg'),
+	('14','test@abv.bg'),
+	('15','test@abv.bg'),
+	('16','test@abv.bg'),
+	('17','test@abv.bg'),
+	('18','test@abv.bg'),
+	('19','test@abv.bg'),
+	('20','test@abv.bg'),
+	('21','test@abv.bg'),
+	('22','test@abv.bg'),
+	('23','test@abv.bg'),
+	('24','test@abv.bg'),
+	('25','test@abv.bg'),
+	('26','test@abv.bg'),
+	('27','test@abv.bg'),
+	('28','test@abv.bg'),
+	('29','test@abv.bg'),
+	('30','test@abv.bg'),
+	('31','test@abv.bg'),
+	('32','test@abv.bg'),
+	('33','test@abv.bg'),
+	('34','test@abv.bg'),
+	('35','test@abv.bg'),
+	('36','test@abv.bg'),
+	('37','test@abv.bg'),
+	('38','test@abv.bg'),
+	('39','test@abv.bg'),
+	('40','test@abv.bg'),
+	('41','test@abv.bg'),
+	('42','test@abv.bg'),
+	('43','test@abv.bg'),
+	('44','test@abv.bg'),
+	('45','test@abv.bg'),
+	('46','test@abv.bg'),
+	('47','test@abv.bg'),
+	('48','test@abv.bg'),
+	('49','test@abv.bg'),
+	('50','test@abv.bg'),
+	('51','test@abv.bg'),
+	('52','test@abv.bg'),
+	('53','test@abv.bg'),
+	('54','test@abv.bg'),
+	('55','test@abv.bg'),
+	('56','test@abv.bg'),
+	('57','test@abv.bg'),
+	('58','test@abv.bg'),
+	('59','test@abv.bg'),
+	('60','test@abv.bg');
+
+	--Adds 60 test passengers to the database. They exist for testing the filtering and paging functionality of the project.
+	--ENSURE THAT DATABASE HAS JUST BEEN CREATED AND TEST RESERVATIONS HAVE BEEN ADDED
+	INSERT INTO [Passengers]([PersonalIdentificationNumber],[ReservationId],[FirstName],[MiddleName],[LastName],[PhoneNumber],[Nationality],[TicketType])
+	VALUES('1111111101','1','test','test','test','1111111111','test','Normal'),
+	('1111111102','2','test','test','test','1111111111','test','Normal'),
+	('1111111103','3','test','test','test','1111111111','test','Normal'),
+	('1111111104','4','test','test','test','1111111111','test','Normal'),
+	('1111111105','5','test','test','test','1111111111','test','Normal'),
+	('1111111106','6','test','test','test','1111111111','test','Normal'),
+	('1111111107','7','test','test','test','1111111111','test','Normal'),
+	('1111111108','8','test','test','test','1111111111','test','Normal'),
+	('1111111109','9','test','test','test','1111111111','test','Normal'),
+	('1111111110','10','test','test','test','1111111111','test','Normal'),
+	('1111111111','11','test','test','test','1111111111','test','Normal'),
+	('1111111112','12','test','test','test','1111111111','test','Normal'),
+	('1111111113','13','test','test','test','1111111111','test','Normal'),
+	('1111111114','14','test','test','test','1111111111','test','Normal'),
+	('1111111115','15','test','test','test','1111111111','test','Normal'),
+	('1111111116','16','test','test','test','1111111111','test','Normal'),
+	('1111111117','17','test','test','test','1111111111','test','Normal'),
+	('1111111118','18','test','test','test','1111111111','test','Normal'),
+	('1111111119','19','test','test','test','1111111111','test','Normal'),
+	('1111111120','20','test','test','test','1111111111','test','Normal'),
+	('1111111121','21','test','test','test','1111111111','test','Normal'),
+	('1111111122','22','test','test','test','1111111111','test','Normal'),
+	('1111111123','23','test','test','test','1111111111','test','Normal'),
+	('1111111124','24','test','test','test','1111111111','test','Normal'),
+	('1111111125','25','test','test','test','1111111111','test','Normal'),
+	('1111111126','26','test','test','test','1111111111','test','Normal'),
+	('1111111127','27','test','test','test','1111111111','test','Normal'),
+	('1111111128','28','test','test','test','1111111111','test','Normal'),
+	('1111111129','29','test','test','test','1111111111','test','Normal'),
+	('1111111130','30','test','test','test','1111111111','test','Normal'),
+	('1111111131','31','test','test','test','1111111111','test','Normal'),
+	('1111111132','32','test','test','test','1111111111','test','Normal'),
+	('1111111133','33','test','test','test','1111111111','test','Normal'),
+	('1111111134','34','test','test','test','1111111111','test','Normal'),
+	('1111111135','35','test','test','test','1111111111','test','Normal'),
+	('1111111136','36','test','test','test','1111111111','test','Normal'),
+	('1111111137','37','test','test','test','1111111111','test','Normal'),
+	('1111111138','38','test','test','test','1111111111','test','Normal'),
+	('1111111139','39','test','test','test','1111111111','test','Normal'),
+	('1111111140','40','test','test','test','1111111111','test','Normal'),
+	('1111111141','41','test','test','test','1111111111','test','Normal'),
+	('1111111142','42','test','test','test','1111111111','test','Normal'),
+	('1111111143','43','test','test','test','1111111111','test','Normal'),
+	('1111111144','44','test','test','test','1111111111','test','Normal'),
+	('1111111145','45','test','test','test','1111111111','test','Normal'),
+	('1111111146','46','test','test','test','1111111111','test','Normal'),
+	('1111111147','47','test','test','test','1111111111','test','Normal'),
+	('1111111148','48','test','test','test','1111111111','test','Normal'),
+	('1111111149','49','test','test','test','1111111111','test','Normal'),
+	('1111111150','50','test','test','test','1111111111','test','Normal'),
+	('1111111151','51','test','test','test','1111111111','test','Normal'),
+	('1111111152','52','test','test','test','1111111111','test','Normal'),
+	('1111111153','53','test','test','test','1111111111','test','Normal'),
+	('1111111154','54','test','test','test','1111111111','test','Normal'),
+	('1111111155','55','test','test','test','1111111111','test','Normal'),
+	('1111111156','56','test','test','test','1111111111','test','Normal'),
+	('1111111157','57','test','test','test','1111111111','test','Normal'),
+	('1111111158','58','test','test','test','1111111111','test','Normal'),
+	('1111111159','59','test','test','test','1111111111','test','Normal'),
+	('1111111160','60','test','test','test','1111111111','test','Normal');
+
