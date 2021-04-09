@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Data\Data.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\User\Desktop\13модул\FlightManager-master\Data\Data.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
