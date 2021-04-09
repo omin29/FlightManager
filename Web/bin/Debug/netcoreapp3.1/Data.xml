@@ -212,6 +212,11 @@
             A constructor which sets an empty HashSet as a value to the <see cref="P:Data.Models.Flight.Reservations"/> navigation property.
             </summary>
         </member>
+        <member name="T:Data.Models.FlightIndexViewModel">
+            <summary>
+            Class for paging Flights Index view
+            </summary>
+        </member>
         <member name="T:Data.Models.Passenger">
             <summary>
             The class represents the passengers who will have reservation for the flights.
@@ -268,6 +273,11 @@
             A navigation property used for configuring the relation to the  <see cref="T:Data.Models.Reservation"/> entities.
             </summary>
         </member>
+        <member name="T:Data.Models.PassengerIndexViewModel">
+            <summary>
+            Class for paging Passengers Index view
+            </summary>
+        </member>
         <member name="T:Data.Models.Reservation">
             <summary>
             The class which represents the flight reservations. One reservation can be made for more than one passenger. The only limit
@@ -304,6 +314,11 @@
         <member name="M:Data.Models.Reservation.#ctor">
             <summary>
             A constructor which sets an empty HashSet as a value to the <see cref="P:Data.Models.Reservation.Passengers"/> navigation property.
+            </summary>
+        </member>
+        <member name="T:Data.Models.ReservationIndexViewModel">
+            <summary>
+            Class for paging Reservations Index view
             </summary>
         </member>
         <member name="T:Data.Models.User">
@@ -380,6 +395,16 @@
         <member name="P:Data.Models.UserEditViewModel.Role">
             <summary>
             <inheritdoc cref="P:Data.Models.User.Role"/>
+            </summary>
+        </member>
+        <member name="T:Data.Models.UserIndexViewModel">
+            <summary>
+            Class for paging Users Index view
+            </summary>
+        </member>
+        <member name="T:Data.Shared.PagerViewModel">
+            <summary>
+            Class for properties used for paging the Index views
             </summary>
         </member>
         <member name="T:Data.Static.ReservationAssistant">
