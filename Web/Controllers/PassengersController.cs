@@ -158,10 +158,10 @@ namespace Web.Controllers
                     ReservationAssistant.PendingPassengers.Clear();
                 }*/
 
-                if(ReservationAssistant.PendingPassengers.Any(x=>x.ReservationId != passenger.ReservationId))
+                /*if(ReservationAssistant.PendingPassengers.Any(x=>x.ReservationId != passenger.ReservationId)) // works if user does not leave passenger adding forms, but if he does and returns the previous pending passenger is remembered and throws invalid PIN field if u re-enter the same
                 {
                     ReservationAssistant.ClearPendingPassengers();
-                }
+                }*/
 
                 ReservationAssistant.PendingPassengers.Add(passenger);
 

@@ -123,6 +123,7 @@ namespace Web.Controllers
 
                 reservation.Id = ReservationAssistant.GetUniqueId();
                 ReservationAssistant.PendingReservation = reservation;
+                ReservationAssistant.ClearPendingPassengers();// experiment passes
 
                 //return RedirectToAction(nameof(Index));
                 return Redirect($"/Passengers/Create?reservationId={reservation.Id}");
