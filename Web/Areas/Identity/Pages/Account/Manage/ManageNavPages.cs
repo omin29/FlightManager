@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Web.Areas.Identity.Pages.Account.Manage
 {
+    #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public static class ManageNavPages
     {
         public static string Index => "Index";

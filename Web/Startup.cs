@@ -21,6 +21,7 @@ namespace Web
     /// </summary>
     public class Startup
     {
+    #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;            

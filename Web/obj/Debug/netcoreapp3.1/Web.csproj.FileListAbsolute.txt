@@ -70,7 +70,6 @@ C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\net
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\Data.dll
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\Data.pdb
-C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.Manifest.cache
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.xml
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\Web.styles.css
@@ -197,14 +196,10 @@ C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\net
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Flights\Edit.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Flights\Index.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Reservations\Create.cshtml.g.cs
-C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Reservations\Delete.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Reservations\Details.cshtml.g.cs
-C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Reservations\Edit.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Reservations\Index.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Passengers\Create.cshtml.g.cs
-C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Passengers\Delete.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Passengers\Details.cshtml.g.cs
-C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Passengers\Edit.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\obj\Debug\netcoreapp3.1\Razor\Views\Passengers\Index.cshtml.g.cs
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\MimeKit.dll
@@ -438,3 +433,4 @@ C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Web\obj\Debug
 C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Web\obj\Debug\netcoreapp3.1\Web.pdb
 C:\Users\User\Desktop\13модул\New folder\FlightManager-master\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
 C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\Data.xml
+C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\bin\Debug\netcoreapp3.1\Web.xml

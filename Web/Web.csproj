@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-Web-52DE61B8-2895-4190-87E9-C3CFA0A304E9</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\oni\Desktop\FINAL MODULE 13\The project\FlightManager\Web\Web.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="MailKit" Version="2.10.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.12" />

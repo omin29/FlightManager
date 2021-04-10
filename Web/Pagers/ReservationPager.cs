@@ -2,6 +2,7 @@
 
 namespace Web.Pagers
 {
+    #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     /// <summary>
     /// Static class to store searched string and paging amount for Reservations
     /// </summary>

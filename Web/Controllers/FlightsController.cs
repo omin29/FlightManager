@@ -33,7 +33,7 @@ namespace Web.Controllers
         /// <summary>
         /// The Flights controller for the Index page. Supports pagination and filtration
         /// </summary>
-        /// <param name="searchString">string for filtering Flights with given from location & to location</param>
+        /// <param name="searchString">string for filtering Flights with given from location and to location</param>
         /// <param name="model">FlightIndexViewModel object used to display filtered or paged records from Flights</param>
         /// <param name="pages">int for the amount of records to be shown on a single page</param>
         /// <returns>Returns Flights Index View with the filtered Flights(if entered search string) otherwise pages all records</returns>

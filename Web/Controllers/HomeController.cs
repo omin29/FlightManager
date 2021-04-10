@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Web.Controllers
 {
+    #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     /// <summary>
     /// Responsible for controlling the start page and successful start of the project
     /// </summary>

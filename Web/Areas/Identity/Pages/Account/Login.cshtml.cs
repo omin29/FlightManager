@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Web.Areas.Identity.Pages.Account
 {
+    #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
