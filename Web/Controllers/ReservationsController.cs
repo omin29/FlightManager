@@ -12,10 +12,17 @@ using Data.Shared;
 using Web.Pagers;
 namespace Web.Controllers
 {
+    /// <summary>
+    /// A controller which provides CRUD operations for the reservations in the database.
+    /// </summary>
     public class ReservationsController : Controller
     {
         private readonly FlightManagerDbContext _context;
 
+        /// <summary>
+        /// Standard constructor which initializes a context used by the controller.
+        /// </summary>
+        /// <param name="context">The flight manager context.</param>
         public ReservationsController(FlightManagerDbContext context)
         {
             _context = context;
@@ -78,6 +85,7 @@ namespace Web.Controllers
             model.Pager.ShowRecords = ReservationPager.currentAmount;
             return View(model);
         }
+
         /// <summary>
         /// The Reservation controller for the Details page. Shows details about the Reservation and the Passengers in it
         /// </summary>
@@ -103,121 +111,40 @@ namespace Web.Controllers
         }
 
         // GET: Reservations/Create
+        /// <summary>
+        /// Prepares flight information for reservation creation and sends it to the reservation creation view.
+        /// </summary>
+        /// <returns>Reservation creation view.</returns>
         public IActionResult Create()
         {
-            ViewData["FlightUniquePlaneNumber"] = new SelectList(_context.Flights, "UniquePlaneNumber", /*"LocationFrom"*/"FlightGeneralInfo");
+            ViewData["FlightUniquePlaneNumber"] = new SelectList(_context.Flights, "UniquePlaneNumber", "FlightGeneralInfo");
             return View();
         }
 
         // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates a pending reservation and redirects towards passenger creation method because the reservation needs passengers.
+        /// </summary>
+        /// <param name="reservation">The reservation created by the user</param>
+        /// <returns><see cref="PassengersController.Create(string)"/></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FlightUniquePlaneNumber,Email")] Reservation reservation)
         {
             if (ModelState.IsValid)
-            {
-                /*_context.Add(reservation);
-                await _context.SaveChangesAsync();*/
-
+            {               
                 reservation.Id = ReservationAssistant.GetUniqueId();
                 ReservationAssistant.PendingReservation = reservation;
                 ReservationAssistant.ClearPendingPassengers();// experiment passes
-
-                //return RedirectToAction(nameof(Index));
+               
                 return Redirect($"/Passengers/Create?reservationId={reservation.Id}");
             }
-            ViewData["FlightUniquePlaneNumber"] = new SelectList(_context.Flights, "UniquePlaneNumber", /*"LocationFrom"*/"FlightGeneralInfo", reservation.FlightUniquePlaneNumber);
+            ViewData["FlightUniquePlaneNumber"] = new SelectList(_context.Flights, "UniquePlaneNumber", "FlightGeneralInfo", reservation.FlightUniquePlaneNumber);
             return View(reservation);
         }
 
-        // GET: Reservations/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservations.FindAsync(id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-            ViewData["FlightUniquePlaneNumber"] = new SelectList(_context.Flights, "UniquePlaneNumber", /*"LocationFrom"*/"FlightGeneralInfo", reservation.FlightUniquePlaneNumber);
-            return View(reservation);
-        }
-
-        // POST: Reservations/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FlightUniquePlaneNumber,Email")] Reservation reservation)
-        {
-            if (id != reservation.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(reservation);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ReservationExists(reservation.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["FlightUniquePlaneNumber"] = new SelectList(_context.Flights, "UniquePlaneNumber", /*"LocationFrom"*/"FlightGeneralInfo", reservation.FlightUniquePlaneNumber);
-            return View(reservation);
-        }
-
-        // GET: Reservations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservations
-                .Include(r => r.Flight)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-
-            return View(reservation);
-        }
-
-        // POST: Reservations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reservation = await _context.Reservations.FindAsync(id);
-            _context.Reservations.Remove(reservation);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ReservationExists(int id)
-        {
-            return _context.Reservations.Any(e => e.Id == id);
-        }
+        //IMPORTANT NOTE: The controller methods for editing and deleting reservations have been removed because they are not used in this application!
     }
 }

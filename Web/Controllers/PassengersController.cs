@@ -13,10 +13,17 @@ using Data.Shared;
 using Web.Pagers;
 namespace Web.Controllers
 {
+    /// <summary>
+    /// The controller provides CRUD operations for the passengers in the database.
+    /// </summary>
     public class PassengersController : Controller
     {
         private readonly FlightManagerDbContext _context;
 
+        /// <summary>
+        /// Standard constructor which initializes a context used by the controller.
+        /// </summary>
+        /// <param name="context">The flight manager context.</param>
         public PassengersController(FlightManagerDbContext context)
         {           
             _context = context;
@@ -109,6 +116,11 @@ namespace Web.Controllers
         }
 
         // GET: Passengers/Details/5
+        /// <summary>
+        /// Shows a detailed view of a passenger.
+        /// </summary>
+        /// <param name="id">Primary key of passenger.</param>
+        /// <returns>Passenger detail view.</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -127,13 +139,11 @@ namespace Web.Controllers
             return View(passenger);
         }
 
-        // GET: Passengers/Create
-        /*public IActionResult Create()
-        {
-            ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email");
-            return View();
-        }*/
-
+        /// <summary>
+        /// Prepares information about the reservation which is used in the creating form for passengers.
+        /// </summary>
+        /// <param name="reservationId">Primary key of the reservation for which the passenger is made.</param>
+        /// <returns>Passenger creation view.</returns>
         public IActionResult Create(string reservationId)
         {
             //ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email");
@@ -144,25 +154,20 @@ namespace Web.Controllers
         // POST: Passengers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates a passenger which goes to a pending list. This process repeats until the user stops adding passengers to the reservation.
+        /// After the users confirmation a final method for finishing the reservation is called.
+        /// </summary>
+        /// <param name="passenger">A passenger created by the user</param>
+        /// <param name="finishAdding">A bool value which indicates if the user has finished adding passengers to the reservation.</param>
+        /// <returns>The <see cref="FinishReservation"/> method.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PersonalIdentificationNumber,FirstName,MiddleName,LastName,PhoneNumber,Nationality,TicketType,ReservationId")] Passenger passenger,
             string finishAdding)
         {
             if (ModelState.IsValid)
-            {
-                /*_context.Add(passenger);
-                await _context.SaveChangesAsync();*/
-                /*if(ReservationAssistant.PendingPassengers.Count> 0 && ReservationAssistant.PendingReservation.Id != passenger.ReservationId)
-                {
-                    ReservationAssistant.PendingPassengers.Clear();
-                }*/
-
-                /*if(ReservationAssistant.PendingPassengers.Any(x=>x.ReservationId != passenger.ReservationId)) // works if user does not leave passenger adding forms, but if he does and returns the previous pending passenger is remembered and throws invalid PIN field if u re-enter the same
-                {
-                    ReservationAssistant.ClearPendingPassengers();
-                }*/
-
+            {               
                 ReservationAssistant.PendingPassengers.Add(passenger);
 
                 if (finishAdding == "false")
@@ -179,13 +184,15 @@ namespace Web.Controllers
             return View(passenger);
         }
 
+        /// <summary>
+        /// Finishes the reservation of passengers. It adds the pending passengers and reservation to the database if it is possible
+        /// and updates the free flight seats number. An email is sent to the email address provided by the user for the reservation.
+        /// Depending on the circumstances this email will notify the user if the reservation has been successful or not by providing
+        /// information about the flight and passengers related to the reservation.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> FinishReservation()
-        {
-            /*Reservation pendingReservation = _context.Reservations.Where(x => x.Id == _context.Passengers.OrderByDescending(x=>x.Id).First().ReservationId).FirstOrDefault();
-            Flight flight = _context.Flights.Where(x => x.UniquePlaneNumber == pendingReservation.FlightUniquePlaneNumber).FirstOrDefault();
-            int normalSeatsForReservation = _context.Passengers.Where(x => x.ReservationId == pendingReservation.Id).Where(x => x.TicketType == "Normal").Count();
-            int businessSeatsForReservation = _context.Passengers.Where(x => x.ReservationId == pendingReservation.Id).Where(x => x.TicketType == "Business").Count();*/
-            
+        {                 
             Flight flight = _context.Flights.Where(x => x.UniquePlaneNumber == ReservationAssistant.PendingReservation.FlightUniquePlaneNumber).First();
             int normalSeatsForReservation = ReservationAssistant.PendingPassengers.Where(x => x.TicketType == "Normal").Count();
             int businessSeatsForReservation = ReservationAssistant.PendingPassengers.Where(x => x.TicketType == "Business").Count();
@@ -225,92 +232,6 @@ namespace Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Passengers/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var passenger = await _context.Passengers.FindAsync(id);
-        //    if (passenger == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
-        //    return View(passenger);
-        //}
-
-        // POST: Passengers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,PersonalIdentificationNumber,FirstName,MiddleName,LastName,PhoneNumber,Nationality,TicketType,ReservationId")] Passenger passenger)
-        //{
-        //    if (id != passenger.Id)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(passenger);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!PassengerExists(passenger.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
-        //    return View(passenger);
-        //}
-
-        // GET: Passengers/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var passenger = await _context.Passengers
-        //        .Include(p => p.Reservation)
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (passenger == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(passenger);
-        //}
-
-        // POST: Passengers/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var passenger = await _context.Passengers.FindAsync(id);
-        //    _context.Passengers.Remove(passenger);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private bool PassengerExists(int id)
-        //{
-        //    return _context.Passengers.Any(e => e.Id == id);
-        //}
+        //IMPORTANT NOTE: The controller methods for editing and deleting passengers have been removed because they are not used in this application!
     }
 }
