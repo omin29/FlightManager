@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Data.Attributes.EmailUserUniqueAttribute">
+    <Position X="1.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Attributes\EmailUserUniqueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Attributes.UniquePassengerPIN">
+    <Position X="3.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\UniquePassengerPIN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Attributes.UniqueUserPIN">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\UniqueUserPIN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Attributes.UnlikeAttribute">
+    <Position X="9.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\UnlikeAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Attributes.ValidFlightTimesAttribute">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\ValidFlightTimesAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Context.FlightManagerDbContext">
+    <Position X="7" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQQQAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Context\FlightManagerDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Migrations.Final">
+    <Position X="1.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20210327222714_Final.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Migrations.FlightManagerDbContextModelSnapshot">
+    <Position X="3.75" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\FlightManagerDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.ErrorViewModel">
+    <Position X="1.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.FlightIndexViewModel">
+    <Position X="3.25" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FlightIndexViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.Flight">
+    <Position X="1.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAQEQAAAAAAAAIAEAABAAAACAAQAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\Flight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.Passenger">
+    <Position X="3.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAhAAAAEAAQQAAAAAAAAAAAAAAAAAAACAk=</HashCode>
+      <FileName>Models\Passenger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.PassengerIndexViewModel">
+    <Position X="5.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PassengerIndexViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.Reservation">
+    <Position X="6" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACQAAAAAAAAAAAAAAAAAAAAAAAQAAAAAgAA=</HashCode>
+      <FileName>Models\Reservation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.ReservationIndexViewModel">
+    <Position X="8" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResservationIndexViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.User">
+    <Position X="8.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAEAAAQAAAAAAAAAACAAAAAAAAAAk=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.UserEditViewModel">
+    <Position X="10.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAEAAAQAAAAAAAAAACAAAAAAAAAAk=</HashCode>
+      <FileName>Models\UserEditViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Models.UserIndexViewModel">
+    <Position X="13" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserIndexViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Shared.PagerViewModel">
+    <Position X="1.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAACAAAAAgAAAAAAI=</HashCode>
+      <FileName>Shared\PagerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data.Static.ReservationAssistant">
+    <Position X="3.25" Y="11.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAQAAAgAAAAAAAAQBAAkAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Static\ReservationAssistant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

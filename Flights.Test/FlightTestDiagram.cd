@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Flights.Test.FlightsTests">
+    <Position X="1" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAACAAAAAAAEEAEAACAAAAAAAAAQAAADAAAAAA=</HashCode>
+      <FileName>ModelsTest\FlightTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flights.Test.PassengerTests">
+    <Position X="3.75" Y="1.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACAgAAAAAAAAAAAIAEAAACAACAACgAAEAAAA=</HashCode>
+      <FileName>ModelsTest\PassengerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flights.Test.ReservationTests">
+    <Position X="8.75" Y="1.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAABABAAAAAAEAAAAAAAgAAAA=</HashCode>
+      <FileName>ModelsTest\ReservationTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flights.Test.UserEditViewModelTests">
+    <Position X="1" Y="4.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAABCAAAAQAAAAAEABAAEAABCAAAAACAAAGAAAA=</HashCode>
+      <FileName>ModelsTest\UserEditViewModelTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flights.Test.UserTests">
+    <Position X="6.75" Y="4.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACAAAAQAAAAAAAgAAEAAQCAAACACAAAGAAQA=</HashCode>
+      <FileName>ModelsTest\UserTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

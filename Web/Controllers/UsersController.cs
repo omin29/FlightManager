@@ -51,28 +51,35 @@ namespace Web.Controllers
                 UserPager.search = searchString;
                 items = await _context.Users.Select(u => new User()
                 {
-                    Id=u.Id,
+                    Id = u.Id,
                     PersonalIdentificationNumber = u.PersonalIdentificationNumber,
                     UserName = u.UserName,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
-                    Email = u.Email
+                    Email = u.Email,
+                    PhoneNumber = u.PhoneNumber,
+                    Address = u.Address,
+                    Role = u.Role
                 }).Where(s => (s.LastName.Contains(searchString) || s.FirstName.Contains(searchString) || s.Email.Contains(searchString))).ToListAsync();
                 model.Items = items;
                 model.Pager.CurrentPage = 1;
                 model.Pager.PagesCount = 1;
             }
             //if not searching use pagination
-            else 
+            else
             {
                 UserPager.search = "";
-                items = await _context.Users.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new User() { 
-                Id = u.Id,
-                 PersonalIdentificationNumber = u.PersonalIdentificationNumber,
-                 UserName = u.UserName,
-                 FirstName = u.FirstName,
-                 LastName = u.LastName,
-                 Email = u.Email
+                items = await _context.Users.Skip((model.Pager.CurrentPage - 1) * pages).Take(pages).Select(u => new User()
+                {
+                    Id = u.Id,
+                    PersonalIdentificationNumber = u.PersonalIdentificationNumber,
+                    UserName = u.UserName,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    PhoneNumber = u.PhoneNumber,
+                    Address = u.Address,
+                    Role = u.Role
                 }).ToListAsync();
                 model.Items = items;
                 model.Pager.PagesCount = (int)Math.Ceiling(await _context.Users.CountAsync() / (double)pages);
@@ -88,7 +95,10 @@ namespace Web.Controllers
                         UserName = u.UserName,
                         FirstName = u.FirstName,
                         LastName = u.LastName,
-                        Email = u.Email
+                        Email = u.Email,
+                        PhoneNumber = u.PhoneNumber,
+                        Address = u.Address,
+                        Role = u.Role
                     }).ToListAsync();
                     model.Items = items;
                 }
@@ -212,7 +222,7 @@ namespace Web.Controllers
             editedUser.FirstName = model.FirstName;
             editedUser.LastName = model.LastName;
             editedUser.PersonalIdentificationNumber = model.PersonalIdentificationNumber;
-            editedUser.Role = model.Role;           
+            editedUser.Role = model.Role;
 
             if (ModelState.IsValid)
             {
@@ -272,12 +282,12 @@ namespace Web.Controllers
         {
             var user = await _context.Users.FindAsync(id);
 
-            if(user.Role!= "Admin")
+            if (user.Role != "Admin")
             {
                 _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
             }
-            
+
             return RedirectToAction(nameof(Index));
         }
 
