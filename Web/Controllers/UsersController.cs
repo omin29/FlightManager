@@ -262,7 +262,7 @@ namespace Web.Controllers
 
         // POST: Users/Delete/5
         /// <summary>
-        /// Deletes an user from the database after receiving a confirmation.
+        /// Deletes an user from the database after receiving a confirmation. The administrator account cannot be deleted.
         /// </summary>
         /// <param name="id">Primary key of user</param>
         /// <returns>The index page for users.</returns>

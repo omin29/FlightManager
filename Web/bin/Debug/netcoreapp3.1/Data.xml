@@ -431,12 +431,6 @@
             It is used when the pending reservation has changed or been finished.
             </summary>
         </member>
-        <member name="M:Data.Static.ReservationAssistant.GetUniqueId">
-            <summary>
-            Generates a random unique identifier for the pending reservation. It is done to differentiate the different pending reservations which the user creates.
-            </summary>
-            <returns>An Id for the pending reservation.</returns>
-        </member>
         <member name="M:Data.Static.ReservationAssistant.PrepareEmail(System.Text.StringBuilder)">
             <summary>
             Prepares the whole email by configuring its sender, receiver, subject and body. A dedicated gmail account exists as the sender.

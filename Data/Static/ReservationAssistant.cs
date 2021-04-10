@@ -41,25 +41,6 @@ namespace Data.Static
         }
 
         /// <summary>
-        /// Generates a random unique identifier for the pending reservation. It is done to differentiate the different pending reservations which the user creates.
-        /// </summary>
-        /// <returns>An Id for the pending reservation.</returns>
-        public static int GetUniqueId()
-        {
-            int id = new Random().Next(int.MaxValue);
-
-            if (PendingReservation != null)
-            {
-                while (id == PendingReservation.Id)
-                {
-                    id = new Random().Next(int.MaxValue);
-                }
-            }           
-
-            return id;
-        }
-
-        /// <summary>
         /// Prepares the whole email by configuring its sender, receiver, subject and body. A dedicated gmail account exists as the sender.
         /// The receiver is the email which the user specifies while creating the reservation. The email is about the status of the reservation
         /// and notifies the user if it is successful or not.

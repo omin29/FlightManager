@@ -131,13 +131,12 @@ namespace Web.Controllers
         /// <returns><see cref="PassengersController.Create(string)"/></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FlightUniquePlaneNumber,Email")] Reservation reservation)
+        public IActionResult Create([Bind("Id,FlightUniquePlaneNumber,Email")] Reservation reservation)
         {
             if (ModelState.IsValid)
-            {               
-                reservation.Id = ReservationAssistant.GetUniqueId();
+            {                              
                 ReservationAssistant.PendingReservation = reservation;
-                ReservationAssistant.ClearPendingPassengers();// experiment passes
+                ReservationAssistant.ClearPendingPassengers();
                
                 return Redirect($"/Passengers/Create?reservationId={reservation.Id}");
             }

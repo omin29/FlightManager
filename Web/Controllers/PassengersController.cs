@@ -109,10 +109,6 @@ namespace Web.Controllers
             model.Pager.ShowRecords = PassengerPager.currentAmount;
             
             return View(model);
-
-
-            //var flightManagerDbContext = _context.Passengers.Include(p => p.Reservation);
-            //return View(await flightManagerDbContext.ToListAsync());
         }
 
         // GET: Passengers/Details/5
@@ -146,7 +142,6 @@ namespace Web.Controllers
         /// <returns>Passenger creation view.</returns>
         public IActionResult Create(string reservationId)
         {
-            //ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email");
             ViewData["ReservationId"] = int.Parse(reservationId);
             return View();
         }
@@ -163,7 +158,7 @@ namespace Web.Controllers
         /// <returns>The <see cref="FinishReservation"/> method.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonalIdentificationNumber,FirstName,MiddleName,LastName,PhoneNumber,Nationality,TicketType,ReservationId")] Passenger passenger,
+        public IActionResult Create([Bind("Id,PersonalIdentificationNumber,FirstName,MiddleName,LastName,PhoneNumber,Nationality,TicketType,ReservationId")] Passenger passenger,
             string finishAdding)
         {
             if (ModelState.IsValid)
@@ -179,7 +174,7 @@ namespace Web.Controllers
                     return RedirectToAction(nameof(FinishReservation));
                 }
             }
-            //ViewData["ReservationId"] = new SelectList(_context.Reservations, "Id", "Email", passenger.ReservationId);
+            
             ViewData["ReservationId"] = passenger.ReservationId;
             return View(passenger);
         }
@@ -200,7 +195,6 @@ namespace Web.Controllers
 
             if (flight.FreePassengerSeats >= normalSeatsForReservation && flight.FreeBusinessSeats >= businessSeatsForReservation)
             {
-                ReservationAssistant.PendingReservation.Id = 0;
                 _context.Reservations.Add(ReservationAssistant.PendingReservation);
                 await _context.SaveChangesAsync();
 
@@ -211,8 +205,6 @@ namespace Web.Controllers
                     passenger.ReservationId = pendingReservationId;
                     _context.Passengers.Add(passenger);
                 }
-
-                //await _context.SaveChangesAsync();
 
                 flight.FreePassengerSeats -= normalSeatsForReservation;
                 flight.FreeBusinessSeats -= businessSeatsForReservation;
