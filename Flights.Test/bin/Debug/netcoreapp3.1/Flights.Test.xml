@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flights.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Flights.Test.FlightsTests">
+            <summary>
+            This class runs tests on class <see cref="T:Data.Models.Flight"/>
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.Setup">
+            <summary>
+            Prepares valid data for the <see cref="T:Data.Models.Flight"/> object in this class before every test.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.ValidateFlight">
+            <summary>
+            This is the method which checks if the flight is valid.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.CheckInvalidPilotName">
+            <summary>
+            Checks an invalid pilot name which does not contain only letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.CheckInvalidPilotNameSize">
+            <summary>
+            Checks an invalid pilot name which exceeds the 50 character length limit.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.CheckCompletelyValidFlight">
+            <summary>
+            Check a completely valid flight which should not throw <see cref="T:System.ComponentModel.DataAnnotations.ValidationException"/>.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.CheckInvalidFreePassengerSeats">
+            <summary>
+            Checks an invalid free passenger seats value which is negative.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.CheckInvalidFreeBusinessSeats">
+            <summary>
+            Checks an invalid free business seats value which is negative.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.FlightsTests.CheckInvalidLocacionFrom">
+            <summary>
+            Check an invalid flight which has the same departure location as destination.
+            </summary>
+        </member>
+        <member name="T:Flights.Test.PassengerTests">
+            <summary>
+            This class runs tests on class <see cref="T:Data.Models.Passenger"/>
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.Setup">
+            <summary>
+             Prepares valid data for the <see cref="T:Data.Models.Passenger"/> object in this class before every test.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.ValidatePassenger">
+            <summary>
+            This is the method which checks if the passenger is valid. 
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckCompletelyValidPassenger">
+            <summary>
+            Check completely valid passenger which should not throw <see cref="T:System.ComponentModel.DataAnnotations.ValidationException"/>.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckInvalidFirstName">
+            <summary>
+            Checks invalid first name which does not contain only letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckInvalidFirstNameSize">
+            <summary>
+            Check invalid first name which exceeds the 50 character length limit.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckInvalidPersonalIdentificationNumberWhichContainsLetters">
+            <summary>
+            Checks an invalid personal identification number which contains letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckPersonalIdentificationNumberWhichContainsInvalidNumberOfDigits">
+            <summary>
+            Checks a personal identification number which contains invalid number of digits.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckInvalidPhoneNumberWhichContainsLetters">
+            <summary>
+            Checks an invalid phone number  which contains letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.PassengerTests.CheckInvalidPhoneNumberLength">
+            <summary>
+            Checks an invalid phone number which contains invalid number of digits.
+            </summary>
+        </member>
+        <member name="T:Flights.Test.ReservationTests">
+            <summary>
+            This class runs tests on class <see cref="T:Data.Models.Reservation"/>
+            </summary>
+        </member>
+        <member name="M:Flights.Test.ReservationTests.Setup">
+            <summary>
+             Prepares valid data for the <see cref="T:Data.Models.Reservation"/> object in this class before every test.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.ReservationTests.ValidateReservation">
+            <summary>
+            This is the method which checks if the reservation is valid.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.ReservationTests.CheckCompletelyValidReservation">
+            <summary>
+            Checks a  completely valid reservation which should not throw <see cref="T:System.ComponentModel.DataAnnotations.ValidationException"/>.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.ReservationTests.CheckInvalidEmail">
+            <summary>
+            Checks an invalid email address.
+            </summary>
+        </member>
+        <member name="T:Flights.Test.UserEditViewModelTests">
+            <summary>
+            This class runs tests on class <see cref="T:Data.Models.UserEditViewModel"/>
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.Setup">
+            <summary>
+             Prepares valid data for the <see cref="T:Data.Models.UserEditViewModel"/> object in this class before every test.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.ValidateUserEdit">
+            <summary>
+            This is the method which checks if the user is valid.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckCompletelyValidUserEdit">
+            <summary>
+            Checks a completely valid user which should not throw <see cref="T:System.ComponentModel.DataAnnotations.ValidationException"/>.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidPersonalIdentificationNumberWhichContainsLetters">
+            <summary>
+            Checks an invalid personal identification number which contains letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidFirstName">
+            <summary>
+            Checks an invalid first name which does not contain only letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidFirstNameSize">
+            <summary>
+            Checks an invalid first name which exceeds the 50 character length limit.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidLastName">
+            <summary>
+            Checks an invalid last name which does not contain only letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidLastNameSize">
+            <summary>
+            Checks an invalid last name which exceeds the 50 character length limit.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckPersonalIdentificationNumberWhichContainsInvalidNumberOfDigits">
+            <summary>
+            Checks a personal identification number which contains invalid number of digits
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidPhoneNumberWhichContainsLetters">
+            <summary> 
+            Checks an invalid phone number  which contains letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserEditViewModelTests.CheckInvalidPhoneNumberWithInvalidLength">
+            <summary>
+            Checks an invalid phone number which contains invalid number of digits.
+            </summary>
+        </member>
+        <member name="T:Flights.Test.UserTests">
+            <summary>
+            This class runs tests on class <see cref="T:Data.Models.User"/>
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.Setup">
+            <summary>
+             Prepares valid data for the <see cref="T:Data.Models.User"/> object in this class before every test.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.ValidateUser">
+            <summary>
+            This is the method which checks if the user is valid.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckCompletelyValidUser">
+            <summary>
+            Check a completely valid user which should not throw <see cref="T:System.ComponentModel.DataAnnotations.ValidationException"/>.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckInvalidPersonalIdentificationNumberWhichContainsLetters">
+            <summary>
+            Checks an invalid personal identification number which contains letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckPersonalIdentificationNumberWhichContainsInvalidNumberOfDigits">
+            <summary>
+            Check a personal identification number which contains invalid number of digits.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckInvalidPhoneNumberWhichContainsLetters">
+            <summary>
+            Checks an invalid phone number which contains letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckPersonalPhoneNumberWithInvalidLength">
+            <summary>
+            Checks an invalid phone number which contains invalid number of digits.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckInvalidFirstName">
+            <summary>
+            Checks an invalid first name which does not contain only letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckInvalidFirstNameSize">
+            <summary>
+            Checks an invalid first name which exceeds the 50 character length limit.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckInvalidLastName">
+            <summary>
+            Checks an invalid last name which does not contain only letters.
+            </summary>
+        </member>
+        <member name="M:Flights.Test.UserTests.CheckInvalidLastNameSize">
+            <summary>
+            Checks an invalid last name which exceeds the 50 character length limit.
+            </summary>
+        </member>
+    </members>
+</doc>

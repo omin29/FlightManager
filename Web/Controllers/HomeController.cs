@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Web.Controllers
 {
+    /// <summary>
+    /// Responsible for controlling the start page and successful start of the project
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,6 +29,10 @@ namespace Web.Controllers
             this.userManager = userManager;
         }
 
+        /// <summary>
+        /// Ensures that roles and administrator account exist on project start. The administrator has a default password which can be changed in the future.
+        /// </summary>
+        /// <returns>The home page</returns>
         public async Task<IActionResult> Index()
         {
             if(roleManager.Roles.Count() == 0)

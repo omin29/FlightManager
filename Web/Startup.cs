@@ -16,6 +16,9 @@ using Data.Models;
 
 namespace Web
 {
+    /// <summary>
+    /// This class is used for configuring startup options for the flight manager web application.
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)

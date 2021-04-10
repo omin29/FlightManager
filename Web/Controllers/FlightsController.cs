@@ -13,11 +13,17 @@ using Web.Pagers;
 namespace Web.Controllers
 {
     
-    
+    /// <summary>
+    /// The controller which is responsible for flight CRUD operations.
+    /// </summary>
     public class FlightsController : Controller
     {
         private readonly FlightManagerDbContext _context;
 
+        /// <summary>
+        /// Standard constructor which initializes a context used by the controller.
+        /// </summary>
+        /// <param name="context">The flight manager context.</param>
         public FlightsController(FlightManagerDbContext context)
         {
             _context = context;
@@ -136,6 +142,10 @@ namespace Web.Controllers
         }
 
         // GET: Flights/Create
+        /// <summary>
+        /// Returns the form for flight creation which the user will fill. Accessible only by the administrator.
+        /// </summary>
+        /// <returns>Flight creation view.</returns>
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -145,6 +155,11 @@ namespace Web.Controllers
         // POST: Flights/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates a <see cref="Flight"/> object with the information provided by the user and adds it to the database. Accessible only by the administrator.
+        /// </summary>
+        /// <param name="flight">The flight which will be added to the database.</param>
+        /// <returns>The index page for flights.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -160,6 +175,11 @@ namespace Web.Controllers
         }
 
         // GET: Flights/Edit/5
+        /// <summary>
+        /// Finds a flight from the database by using its primary key and prepares it for edit. Accessible only by the administrator.
+        /// </summary>
+        /// <param name="id">The id of the flight which will be edited.</param>
+        /// <returns>Flight edit view</returns>
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -179,6 +199,12 @@ namespace Web.Controllers
         // POST: Flights/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits a flight and saves the changes to the database. Accessible only by the administrator.
+        /// </summary>
+        /// <param name="id">The primary key of the flight</param>
+        /// <param name="flight">The modified flight which will be saved.</param>
+        /// <returns>The index page for flights.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -213,6 +239,11 @@ namespace Web.Controllers
         }
 
         // GET: Flights/Delete/5
+        /// <summary>
+        /// Prepares a flight for deletion. Accessible only by the administrator.
+        /// </summary>
+        /// <param name="id">Primary key of the flight which will be deleted</param>
+        /// <returns>Flight delete view</returns>
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -232,6 +263,11 @@ namespace Web.Controllers
         }
 
         // POST: Flights/Delete/5
+        /// <summary>
+        /// Deletes the flight after receiving confirmation from the user. Accessible only by the administrator.
+        /// </summary>
+        /// <param name="id">Primary key of the deleted flight.</param>
+        /// <returns>The index page for flights.</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -243,6 +279,11 @@ namespace Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Checks if a flight exists in the database.
+        /// </summary>
+        /// <param name="id">Primary key of the flight.</param>
+        /// <returns>A bool indicator which shows if the flight exists.</returns>
         private bool FlightExists(int id)
         {
             return _context.Flights.Any(e => e.UniquePlaneNumber == id);

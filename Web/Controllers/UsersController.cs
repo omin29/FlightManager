@@ -13,10 +13,18 @@ using Data.Shared;
 using Web.Pagers;
 namespace Web.Controllers
 {
+    /// <summary>
+    /// The controller which is responsible for user CRUD operations. Accessible only by the administrator.
+    /// </summary>
     [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly FlightManagerDbContext _context;
+
+        /// <summary>
+        /// Standard constructor which initializes a context used by the controller.
+        /// </summary>
+        /// <param name="context">The flight manager context.</param>
         public UsersController(FlightManagerDbContext context)
         {
             _context = context;
@@ -90,6 +98,11 @@ namespace Web.Controllers
         }
 
         //GET: Users/Details/5
+        /// <summary>
+        /// Returns a detailed view for a user.
+        /// </summary>
+        /// <param name="id">Primary key of the user</param>
+        /// <returns>User detail view.</returns>
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -108,27 +121,21 @@ namespace Web.Controllers
         }
 
         // GET: UsersController/Create
+        /// <summary>
+        /// Redirects to the user registration form.
+        /// </summary>
+        /// <returns>User registration form.</returns>
         public ActionResult Create()
         {
             return Redirect(@"https://localhost:44370/Identity/Account/Register");
         }
 
-        //// POST: UsersController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
         // GET: Users/Edit/5
+        /// <summary>
+        /// Finds an user from the database using its primary key and prepares it for edit.
+        /// </summary>
+        /// <param name="id">Primary key of the user</param>
+        /// <returns>User edit view.</returns>
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -168,6 +175,12 @@ namespace Web.Controllers
         }
 
         // POST: Users/Edit/5
+        /// <summary>
+        /// Takes an edited <see cref="User"/> object and saves its changes to the database.
+        /// </summary>
+        /// <param name="id">Primary key of the user</param>
+        /// <param name="model">The edited user.</param>
+        /// <returns>The index page for users.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,PersonalIdentificationNumber,UserName,FirstName,LastName,Email,PhoneNumber,Address,Role,"+
@@ -225,6 +238,11 @@ namespace Web.Controllers
         }
 
         // GET: Users/Delete/5
+        /// <summary>
+        /// Extracts an user from the database and prepares it for delete.
+        /// </summary>
+        /// <param name="id">Primary key of user.</param>
+        /// <returns>User delete view.</returns>
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -243,6 +261,11 @@ namespace Web.Controllers
         }
 
         // POST: Users/Delete/5
+        /// <summary>
+        /// Deletes an user from the database after receiving a confirmation.
+        /// </summary>
+        /// <param name="id">Primary key of user</param>
+        /// <returns>The index page for users.</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -258,6 +281,11 @@ namespace Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Checks if an user exists in the database by searching for it with primary key.
+        /// </summary>
+        /// <param name="id">Primary key of user</param>
+        /// <returns>A bool value which indicates if the user exists.</returns>
         private bool UserExists(string id)
         {
             return _context.Users.Any(e => e.Id == id);
